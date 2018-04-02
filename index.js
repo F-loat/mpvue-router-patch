@@ -54,19 +54,20 @@ function back() {
 
 export default {
   install(Vue) {
+    Vue.prototype.$router = {
+      mode: 'history',
+      push,
+      replace,
+      go,
+      back
+    }
+    
     Vue.mixin({
       mounted() {
         const { $mp } = this.$root
         this.$route = parseRoute($mp)
-        this.$router = {
-          app: this,
-          mode: 'history',
-          currentRoute: this.$route,
-          push,
-          replace,
-          go,
-          back
-        }
+        this.$router.app = this
+        this.$router.currentRoute = this.$route
       }
     })
   }
