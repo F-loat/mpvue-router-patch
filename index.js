@@ -13,12 +13,12 @@ function parseRoute($mp) {
   const _$mp = $mp || {};
   const path = _$mp.page && _$mp.page.route
   return {
-    path,
+    path: `/${path}`,
     params: {},
     query: _$mp.query,
     hash: '',
     fullPath: parseUrl({
-      path,
+      path: `/${path}`,
       query: _$mp.query
     }),
     name: path && path.replace(/\/(\w)/g, ($0, $1) => $1.toUpperCase())
@@ -53,23 +53,40 @@ function back() {
   wx.navigateBack()
 }
 
+export let _Vue
+
 export default {
   install(Vue) {
-    Vue.prototype.$router = {
+    if (this.installed && _Vue === Vue) return
+    this.installed = true
+
+    _Vue = Vue
+
+    const _router = {
       mode: 'history',
       push,
       replace,
       go,
       back
     }
-    
+
     Vue.mixin({
-      mounted() {
+      onLoad() {
         const { $mp } = this.$root
-        this.$route = parseRoute($mp)
-        this.$router.app = this
-        this.$router.currentRoute = this.$route
+        _router.currentRoute = parseRoute($mp)
+        Vue.util.defineReactive(this, '_route', _router.currentRoute)
+      },
+      onShow() {
+        _router.app = this
       }
+    })
+
+    Object.defineProperty(Vue.prototype, '$router', {
+      get() { return _router }
+    })
+
+    Object.defineProperty(Vue.prototype, '$route', {
+      get() { return this._route }
     })
   }
 }
