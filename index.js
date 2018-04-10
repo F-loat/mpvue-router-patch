@@ -73,8 +73,8 @@ export default {
     Vue.mixin({
       onLoad() {
         const { $mp } = this.$root
-        _router.currentRoute = parseRoute($mp)
-        Vue.util.defineReactive(this, '_route', _router.currentRoute)
+        this._route = parseRoute($mp)
+        _router.currentRoute = this._route
       },
       onShow() {
         _router.app = this
