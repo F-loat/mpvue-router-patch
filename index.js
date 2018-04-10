@@ -10,15 +10,16 @@ function parseUrl(location) {
 }
 
 function parseRoute($mp) {
-  const path = $mp.page && $mp.page.route
+  const _$mp = $mp || {};
+  const path = _$mp.page && _$mp.page.route
   return {
     path,
     params: {},
-    query: $mp.query,
+    query: _$mp.query,
     hash: '',
     fullPath: parseUrl({
       path,
-      query: $mp.query
+      query: _$mp.query
     }),
     name: path && path.replace(/\/(\w)/g, ($0, $1) => $1.toUpperCase())
   }
