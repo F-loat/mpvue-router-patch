@@ -74,10 +74,10 @@ export default {
       onLoad() {
         const { $mp } = this.$root
         this._route = parseRoute($mp)
-        _router.currentRoute = this._route
       },
       onShow() {
         _router.app = this
+        _router.currentRoute = this._route
       }
     })
 
