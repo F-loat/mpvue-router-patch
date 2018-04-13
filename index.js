@@ -4,7 +4,9 @@ function parseUrl(location) {
   if (typeof location === 'string') return location
 
   const { path, query } = location
-  const queryStr = queryString.stringify(location.query)
+  const queryStr = queryString.stringify(location.query, {
+    encode: false
+  })
 
   return `${path}?${queryStr}`
 }
