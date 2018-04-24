@@ -55,6 +55,29 @@ function back() {
   wx.navigateBack()
 }
 
+let routerMethods = {
+  push,
+  replace,
+  go,
+  back
+}
+
+// 首字母大写
+function upperCapital(word){
+  return word.replace(/^([a-z])/, (w,cap)=>cap.toUpperCase());
+}
+// 代理方法对象
+function proxyRooter(){
+  let proxyMethods = {};
+  ['push','replace','go','back'].map(method=>{
+    proxyMethods['$router' + upperCapital(method)] = function(){
+      let args = Array.prototype.slice.call(arguments);
+      routerMethods[method].apply(null,args);
+    }
+  });
+  return proxyMethods;
+}
+
 export let _Vue
 
 export default {
@@ -66,10 +89,7 @@ export default {
 
     const _router = {
       mode: 'history',
-      push,
-      replace,
-      go,
-      back
+      ...routerMethods
     }
 
     Vue.mixin({
@@ -80,6 +100,9 @@ export default {
       onShow() {
         _router.app = this
         _router.currentRoute = this._route
+      },
+      methods: {
+        ...proxyRooter()
       }
     })
 
