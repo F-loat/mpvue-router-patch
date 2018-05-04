@@ -36,7 +36,7 @@ function push(location, complete, fail, success) {
     return
   }
   if (location.reLaunch) {
-    wx.reLaunchTo(params)
+    wx.reLaunch(params)
     return
   }
   wx.navigateTo(params)
