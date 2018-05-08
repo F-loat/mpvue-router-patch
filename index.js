@@ -4,15 +4,19 @@ function parseUrl(location) {
   if (typeof location === 'string') return location
 
   const { path, query } = location
-  const queryStr = queryString.stringify(location.query, {
+  const queryStr = queryString.stringify(query, {
     encode: false
   })
+
+  if (!queryStr) {
+    return path
+  }
 
   return `${path}?${queryStr}`
 }
 
 function parseRoute($mp) {
-  const _$mp = $mp || {};
+  const _$mp = $mp || {}
   const path = _$mp.page && _$mp.page.route
   return {
     path: `/${path}`,
@@ -36,7 +40,7 @@ function push(location, complete, fail, success) {
     return
   }
   if (location.reLaunch) {
-    wx.reLaunch(params)
+    wx.reLaunchTo(params)
     return
   }
   wx.navigateTo(params)
