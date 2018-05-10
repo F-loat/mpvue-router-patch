@@ -2,8 +2,9 @@
   "name": "mpvue-router-patch",
   "version": "0.1.8",
   "description": "在 mpvue 中使用 vue-router 兼容的路由写法",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,12 @@
   },
   "homepage": "https://github.com/F-loat/mpvue-router-patch#readme",
   "dependencies": {
-    "query-string": "^6.0.0"
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.6.1",
+    "rollup": "^0.58.2",
+    "rollup-plugin-babel": "^3.0.4"
   }
 }
