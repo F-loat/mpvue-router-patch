@@ -7,6 +7,10 @@
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/F-loat/mpvue-router-patch.git"
@@ -22,9 +26,6 @@
     "url": "https://github.com/F-loat/mpvue-router-patch/issues"
   },
   "homepage": "https://github.com/F-loat/mpvue-router-patch#readme",
-  "dependencies": {
-    "querystring": "^0.2.0"
-  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.6.1",

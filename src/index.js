@@ -1,10 +1,10 @@
-import querystring from 'querystring'
+import { stringify } from './querystring'
 
 function parseUrl(location) {
   if (typeof location === 'string') return location
 
   const { path, query } = location
-  const queryStr = querystring.stringify(query)
+  const queryStr = stringify(query)
 
   if (!queryStr) {
     return path
