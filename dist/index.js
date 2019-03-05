@@ -99,27 +99,27 @@ function push(location, complete, fail, success) {
   var params = { url: url, complete: complete, fail: fail, success: success };
 
   if (location.isTab) {
-    wx.switchTab(params);
+    mpvue.switchTab(params);
     return;
   }
   if (location.reLaunch) {
-    wx.reLaunch(params);
+    mpvue.reLaunch(params);
     return;
   }
-  wx.navigateTo(params);
+  mpvue.navigateTo(params);
 }
 
 function replace(location, complete, fail, success) {
   var url = parseUrl(location);
-  wx.redirectTo({ url: url, complete: complete, fail: fail, success: success });
+  mpvue.redirectTo({ url: url, complete: complete, fail: fail, success: success });
 }
 
 function go(delta) {
-  wx.navigateBack({ delta: delta });
+  mpvue.navigateBack({ delta: delta });
 }
 
 function back() {
-  wx.navigateBack();
+  mpvue.navigateBack();
 }
 
 var _Vue = void 0;

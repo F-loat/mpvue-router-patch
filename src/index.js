@@ -34,27 +34,27 @@ function push(location, complete, fail, success) {
   const params = { url, complete, fail, success }
 
   if (location.isTab) {
-    wx.switchTab(params)
+    mpvue.switchTab(params)
     return
   }
   if (location.reLaunch) {
-    wx.reLaunch(params)
+    mpvue.reLaunch(params)
     return
   }
-  wx.navigateTo(params)
+  mpvue.navigateTo(params)
 }
 
 function replace(location, complete, fail, success) {
   const url = parseUrl(location)
-  wx.redirectTo({ url, complete, fail, success })
+  mpvue.redirectTo({ url, complete, fail, success })
 }
 
 function go(delta) {
-  wx.navigateBack({ delta })
+  mpvue.navigateBack({ delta })
 }
 
 function back() {
-  wx.navigateBack()
+  mpvue.navigateBack()
 }
 
 export let _Vue
