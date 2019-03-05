@@ -1,6 +1,6 @@
 {
   "name": "mpvue-router-patch",
-  "version": "0.2.1",
+  "version": "2.0.0",
   "description": "在 mpvue 中使用 vue-router 兼容的路由写法",
   "main": "dist/index.js",
   "scripts": {
