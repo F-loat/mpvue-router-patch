@@ -44,7 +44,7 @@ Vue.use(MpvueRouterPatch)
 
 * $router.push(location, onComplete?, onAbort?, onSuccess?)
 
-跳转到应用内的某个页面，`wx.navigateTo`、`wx.switchTab` 及 `wx.reLaunch` 均通过该方法实现，`location` 参数支持字符串及对象两种形式，跳转至 `tabBar` 页面或重启至某页面时必须以对象形式传入
+跳转到应用内的某个页面，`mpvue.navigateTo`、`mpvue.switchTab` 及 `mpvue.reLaunch` 均通过该方法实现，`location` 参数支持字符串及对象两种形式，跳转至 `tabBar` 页面或重启至某页面时必须以对象形式传入
 
 ``` js
 // 字符串
@@ -65,7 +65,7 @@ router.push({ path: '/pages/news/list', reLaunch: true })
 
 * $router.replace(location, onComplete?, onAbort?, onSuccess?)
 
-关闭当前页面，跳转到应用内的某个页面，相当于 `wx.redirectTo`，`location` 参数格式与 `$router.push` 相似，不支持 `isTab` 及 `reLaunch` 属性
+关闭当前页面，跳转到应用内的某个页面，相当于 `mpvue.redirectTo`，`location` 参数格式与 `$router.push` 相似，不支持 `isTab` 及 `reLaunch` 属性
 
 * $router.go(n)
 
